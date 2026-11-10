@@ -1,9 +1,15 @@
+
 import './App.css';
 import HeaderUI from './components/HeaderUI';
 import AlertUI from './components/AlertUI';
 import { Grid } from '@mui/material';
+import SelectorUI from './components/SelectorUI';
+import { useState } from 'react';
 
 function App() {
+
+    const [cityInput, setCityInput] = useState('');
+
     return (
         <Grid container spacing={5} sx={{ justifyContent: 'center', alignItems: 'center' }}>
 
@@ -20,12 +26,19 @@ function App() {
 
             </Grid>
 
-
             {/* Selector */}
-            <Grid size={{ xs: 12, md: 3 }}>Elemento: Selector</Grid>
+            <Grid size={{ xs: 12, md: 3 }}>
+                <SelectorUI
+                    cityInput={cityInput}
+                    setCityInput={setCityInput}
+                />
+            </Grid>
 
             {/* Indicadores */}
-            <Grid size={{ xs: 12, md: 9 }}>Elemento: Indicadores</Grid>
+            <Grid size={{ xs: 12, md: 9 }}>
+                Elemento: Indicadores
+                {cityInput && <p>Ciudad seleccionada: {cityInput}</p>}
+            </Grid>
 
             {/* Gráfico */}
             <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -38,7 +51,10 @@ function App() {
             </Grid>
 
             {/* Información adicional */}
-            <Grid size={{ xs: 12, md: 12 }}>Elemento: Información adicional</Grid>
+            <Grid size={{ xs: 12, md: 12 }}>
+                Elemento: Información adicional
+                {cityInput && <p>Mostrando información de {cityInput}</p>}
+            </Grid>
 
         </Grid>
     );
