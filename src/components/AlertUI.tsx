@@ -1,15 +1,11 @@
-import Alert, { type AlertColor } from '@mui/material/Alert';
-
-type AlertVariant = 'standard' | 'outlined' | 'filled';
+import Alert from '@mui/material/Alert';
 
 interface AlertConfig {
     description: string;
-    severity?: AlertColor;
-    variant?: AlertVariant;
 }
 
-export default function AlertUI({ description, severity = 'success', variant = 'outlined' }: AlertConfig) {
+export default function AlertUI(config: AlertConfig) {
     return (
-        <Alert variant={variant} severity={severity}>{description}</Alert>
+        <Alert variant="outlined" severity="success">{config.description}</Alert>
     );
 }
